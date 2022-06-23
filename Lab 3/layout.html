@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>WAP Assignment</title>
+    <style>
+        #header {
+            display: flex;
+            border-bottom: 1px solid black;
+            height: 50px;
+        }
+
+        .logo{
+            width: 20%;
+            text-align: center;
+        }
+
+        .name{
+            width: 60%;
+            text-align: center;
+        }
+
+        .logout{
+            width: 20%;
+            text-align: center;
+        }
+        .card-icon{
+            width: 50px;
+        }
+
+        table{
+            border: 1px solid black;
+            width: 100%
+            ;
+        }
+        table tr td{
+            border: 1px solid black;
+            text-align: center;
+        }
+        .text-align-right{
+            text-align: end;
+            padding-right: 50px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="header">
+        <div class="logo">Logo</div>
+        <div class="name">Name</div>
+        <div class="logout">Logout</div>
+    </div>
+
+
+    <h2>Product List</h2>
+    <table>
+        <thead>
+            <th>Name</th>
+            <th>Price</th>
+            <th>Stock</th>
+            <th>Action</th>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Node.js</td>
+                <td>9.99</td>
+                <td>8</td>
+                <td><img class="card-icon" src="./../public/assets/images/shopping-cart-outline.svg"/></td>
+            </tr>
+            <tr>
+                <td>React</td>
+                <td>19.99</td>
+                <td>5</td>
+                <td><img class="card-icon" src="./../public/assets/images/shopping-cart-outline.svg"/></td>
+            </tr>
+            <tr>
+                <td>angular</td>
+                <td>29.99</td>
+                <td>19</td>
+                <td><img class="card-icon" src="./../public/assets/images/shopping-cart-outline.svg"/></td>
+            </tr>
+        </tbody>
+    </table>
+
+    <h2>Your Shopping Cart</h2>
+    <table>
+        <thead>
+            <th>Name</th>
+            <th>Price</th>
+            <th>Total</th>
+            <th>Quantity</th>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Node.js</td>
+                <td>9.99</td>
+                <td>8</td>
+                <td>6</td>
+            </tr>
+            <tr>
+                <td>React</td>
+                <td>19.99</td>
+                <td>5</td>
+                <td>10</td>
+            </tr>
+            <tr>
+                <td>angular</td>
+                <td>29.99</td>
+                <td>19</td>
+                <td>9</td>
+            </tr>
+            <tr>
+                <td class="text-align-right" colspan="4"> Total: $350.56</td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+
+</html>
