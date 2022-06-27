@@ -7,7 +7,7 @@
     <link href="./../public/assets/images/icons8-globe.gif" type="image/png" rel="shortcut icon">
     <title>Lab 4 - HTML Forms</title>
     <link href="../public/assets/css/lab4/style.css" type="text/css" rel="stylesheet">
-    <style>
+    <!-- <style>
         #header {
             display: flex;
             height: 50px;
@@ -53,35 +53,162 @@
             width: 100%;
             font-size: 22px;
         }
-    </style>
+        select{
+            width: 100%;
+            font-size: 20px;
+        }
+        textarea{
+            width: 100%;
+            font-size: 22px;
+        }
+
+        .width-100{
+            width: 100%;
+        }
+    </style> -->
 </head>
 <body>
-    <div id="header">
-        <div class="logo">Logo</div>
-        <div class="name">Name</div>
-        <div class="logout">Logout</div>
+
+    <div class="wrapper">
+        <header class="header">
+            <h2>Work Registration</h2>
+            <ul>
+                <li class="more-action">
+                    <select name="action" id="action">
+                        <option value="">More Options</option>
+                        <option value="">Option A</option>
+                        <option value="">Option B</option>
+                    </select>
+                </li>
+            </ul>
+        </header>
+        <!-- <aside class="aside">
+
+        </aside> -->
+        <section class="section">
+            <div class="form-register">
+                <h5>Register now while seats are available!</h5>
+            </div>
+            <form encType="application/x-www-form-urlencoded" method="post" action="#" autocomplete="off" >
+                <div class="form-wrapper">
+                    <div class="left">
+                        <div class="group">
+                            <label for="txtFirstName">First Name<span class="required">*</span></label>
+                            <input type="text" name="txtFirstName" id="txtFirstName" autocomplete="off" pattern="[a-zA-Z]+" required/>
+                        </div>
+                        <div class="group">
+                            <label for="txtLastName">Last Name <span class="required">*</span></label>
+                            <input type="text" name="txtLastName" id="txtLastName"  autocomplete="off" pattern="[a-zA-Z]+" required/>
+                        </div>
+                        <div class="group">
+                            <label for="txtCompany">Company/Institution<span class="required">*</span></label>
+                            <input type="text" name="txtCompany" id="txtCompany" required autocomplete="off"/>
+                        </div>
+                        <div class="group">
+                            <label for="txtAddress">Address<span class="required">*</span></label>
+                            <textarea name="txtAddress" id="txtAddress" cols="30" rows="10" required autocomplete="off"></textarea>
+                        </div>
+                        <div class="group">
+                            <label for="txtCity">City</label>
+                            <input type="text" name="txtCity" id="txtCity">
+                        </div>
+                        <div class="group">
+                            <label for="ddState">State/Province/Region</label>
+                            <select name="ddState" id="ddState">
+                                <option value="">--Select---</option>
+                                <option value="">A</option>
+                                <option value="">B</option>
+                                <option value="">C</option>
+                            </select>
+                        </div>
+                        <div class="group">
+                            <label for="ddCountry">Country</label>
+                            <select name="ddCountry" id="ddCountry">
+                                <option value="">---Select---</option>
+                                <optgroup label="North America">
+                                <option value="">USA</option>
+                                <option value="">Canada</option>
+                            </optgroup>
+                            <optgroup label="Europe">
+                                <option value="">France</option>
+                                <option value="">UK</option>
+                                <option value="">Belgium</option>
+                                <option value="">Germany</option>
+                            </optgroup>
+                            <optgroup label="Asia">
+                                <option value="">Nepal</option>
+                                <option value="">Bangladesh</option>
+                                <option value="">Pakistan</option>
+                                <option value="">Bhutan</option>
+                            </optgroup>
+                            </select>
+                        </div>
+                        <div class="group">
+                            <label for="txtEmail">Email<span class="required">*</span></label>
+                            <input type="text" name="txtEmail" id="txtEmail" pattern="[a-z0-9._+\-]+@[a-z0-0.\-]+\.[a-z]{2,3}" required autocomplete="off"/>
+                        </div>
+                        <div class="group">
+                            <label for="txtPhoneNumber">Phone Number<span class="required">*</span></label>
+                            <input type="text" name="txtPhoneNumber" id="txtPhoneNumber" pattern="[0-9]{3} [0-9]{3} [0-9]{4}" placeholder="XXX XXX XXXX" required  autocomplete="off"/>
+                        </div>
+                    </div>
+                    <div class="right">
+                        <fieldset class="fieldset">
+                            <div class="group">
+                                <h5>Lunch</h5>
+                            </div>
+                            <div class="group">
+                                <label for="ddlMealPreference">Meal Preference</label>
+                                <select name="ddlMealPreference" id="ddlMealPreference">
+                                    <option value="Vegetarian">Vegetarian</option>
+                                    <option value="Vegan">Vegan</option>
+                                    <option value="NonVegetarian">Non-Vegetarian</option>
+                                    <option value="NonVegetarianLessBeef">Non-Vegetarian without Beef</option>
+                                </select>
+                            </div>
+                            <div class="group">
+                                <h5>Payment Details</h5>
+                            </div>
+                            <div class="group cbPaymentMode">
+                                <label>Payment Mode</label>
+                                <ul>
+                                    <li> <input type="checkbox" name="cbPaymentModeCash" id="cbPaymentModeCash" />Cash
+                                    </li>
+                                    <li> <input type="checkbox" name="cbPaymentModeCheque"
+                                            id="cbPaymentModeCheque" />Cheque</li>
+                                    <li> <input type="checkbox" name="cbPaymentModeDemandDraft"
+                                            id="cbPaymentModeDemandDraft" />Demand Draft</li>
+                                </ul>
+                            </div>
+                            <div class="group">
+                                <label for="txtChequeNo">DD/Cheque No.</label>
+                                <input type="text" name="txtChequeNo" id="txtChequeNo" autocomplete="off">
+                            </div>
+                            <div class="group">
+                                <label for="txtBankName">Drawn On (Bank Name)</label>
+                                <input type="text" name="txtBankName" id="txtBankName" autocomplete="off">
+                            </div>
+                            <div class="group">
+                                <label for="txtPayableAt">Payable at</label>
+                                <input type="text" name="txtPayableAt" id="txtPayableAt" autocomplete="off">
+                            </div>
+                        </fieldset>
+                    </div>
+                </div>
+                <footer class="sub-footer">
+                    <button type="reset" class="btn reset">Reset</button>
+                    <button type="submit" class="btn submit">Submit</button>
+                </footer>
+            </form>
+        </section>
+        <footer class="footer">
+            <a target="_blank"
+                href="#"><img
+                    src="./../public/assets/images/HTML-checker.png" alt="Html Checker" width="100" height="30" /></a>
+            <a target="_blank"
+                href="#"><img
+                    src="./../public/assets/images/css_checker.png" alt="CSS Checker" width="100" height="30" /></a>
+        </footer>
     </div>
-
-    <div class="container">
-        <div style="width:50%;">
-            <table class="formtable">
-                <tbody>
-                    <tr>
-                        <td > <label>First Name</label></td>
-                        <td><input type="text"/></td>
-                    </tr>
-    
-                    <tr>
-                        <td><label>Last Name</label></td>
-                        <td><input type="text"/></td>
-                    </tr>
-                </tbody>
-            </table>
-
-        </div>
-        
-
-    </div>
-
 </body>
 </html>
