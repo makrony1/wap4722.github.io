@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width,initial-scale=1">
+        <link href="./../public/assets/images/icons8-globe.gif" type="image/png" rel="shortcut icon">
+        <title>Lab 6 - EXECUTION CONTEXT</title>
+</head>
+<body>
+
+    <pre>
+        <code>
+Ans of the question No 1.
+
+Global Lexical environment -- Creation
+LE{makeArmy:<func>, outer: null }
+
+Global Lexical environment -- Execution
+LE{makeArmy:<func>, army: [fn,fn], outer: null, aramy[0]=function alert(i) }
+
+Lexical environment makeArmy -- Creation
+LE{aurgument:{length:0}, outer:global}
+
+Lexical environment makeArmy -- Creation
+LE{aurgument:{length:0}, outer:global, i=2, shooters = [fn (){alert(i)}, fn(){alert(i)}], LE-for while i=0,LE for While i= 2}
+
+Lexical environment While, when i=0 -- Creation
+LE{outer: makeArmy}
+
+Lexical environment While, when i=0 -- Execution
+LE{outer: makeArmy, shooter:<func>}
+
+LE for army[0]()-- Creation
+
+LE{arguments:{length:0}, outer: closerScope}
+closerScope{ i=2,outer=makeArmy}
+
+LE for army[0]()-- Execution 
+
+LE{arguments:{length:0}, outer: closerScope}
+closerScope{ i=2,outer=makeArmy}
+
+* it will alert 2 as its closerscope's i value is 2;
+
+
+fixed code:
+function makeArmy() {
+    let shooters = [];
+    let i = 0;
+  
+    while (i < 2) {
+      let x=i;
+      let shooter = function () {
+        alert(x);
+      };
+      shooters.push(shooter);
+      i++;
+    }
+    return shooters;
+  }
+  let army = makeArmy();
+  army.forEach((a)=>a())
+
+
+
+  <h2>
+Answer of question no 2
+
+  </h2>
+  function printNumbers(from, to){
+    let current = from;
+    var id = setInterval(function(){
+        
+       
+        if(current===to){
+            console.log(current);
+            clearInterval(id);
+        }
+        console.log(current);
+        current++;
+        
+    },1000)
+}
+
+printNumbers(0,3);
+
+<h2>
+Answer to question no 3
+</h2>
+
+Schedule function run after the loop, and it will alert the 1000000000
+        </code>
+    </pre>
+</body>
+</html>
