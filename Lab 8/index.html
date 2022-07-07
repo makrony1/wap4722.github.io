@@ -1,11 +1,177 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width,initial-scale=1">
-        <link href="./../public/assets/images/icons8-globe.gif" type="image/png" rel="shortcut icon">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <link href="./../public/assets/images/icons8-globe.gif" type="image/png" rel="shortcut icon">
     <title>Lab 8</title>
 </head>
+<script>
+
+
+    const student = {
+        firstName: "",
+        lastName: "",
+        grads: [],
+        inputNewGrade: function (g) {
+            this.grads.push(g);
+        },
+        computeAverageGrade: function () {
+            let total = this.grads.reduce((cur, pre) => cur + pre, 0);
+            return total / this.grads.length;
+        }
+    }
+    let stu1 = Object.create(student);
+    stu1.firstName = "Amit";
+    stu1.lastName = "Ghosh";
+    stu1.inputNewGrade(98);
+    stu1.inputNewGrade(99);
+    stu1.inputNewGrade(100);
+
+    let stu2 = Object.create(student);
+    stu2.firstName = "Shudisshan";
+    stu2.lastName = "Surendhar";
+    stu2.inputNewGrade(91);
+    stu2.inputNewGrade(92);
+    stu2.inputNewGrade(93);
+
+    let students = [];
+    students.push(stu1);
+    students.push(stu2);
+
+    let avg = (students.reduce((c, p) => c + p.computeAverageGrade(), 0)) / students.length;
+
+
+    console.log(`Average grade: ${avg}`);
+
+    Array.prototype.mysort = function () {
+        let arr = this;
+        let len = arr.length;
+        for (let i = len - 1; i >= 0; i--) {
+            for (let j = 1; j <= i; j++) {
+                if (arr[j - 1] > arr[j]) {
+                    let temp = arr[j - 1];
+                    arr[j - 1] = arr[j];
+                    arr[j] = temp;
+                }
+            }
+        }
+        return arr;
+    }
+    console.log([7, 5, 2, 4, 3, 9].mysort());
+
+
+    //Object Literal solution:
+    let linkedlist = {};
+    linkedlist.add = function (element) {
+        if (this.value === undefined) {
+            this.value = element;
+            this.next = null;
+        } else {
+            let current = this;
+            while (current.next) {
+                current = current.next;
+            }
+            current.next = { value: element, next: null };
+        }
+    }
+    linkedlist.remove = function (element) {
+        var current = this;
+        var prev = null;
+        while (current) {
+            if (current.value === element) {
+                if (prev == null) {
+                    this.value = current.next.value;
+                    this.next = current.next.next;
+                } else {
+                    prev.next = current.next;
+                }
+                return true;
+            }
+            prev = current;
+            current = current.next;
+        }
+        return false;
+    }
+    linkedlist.printHelper = function (list, result) {
+        if (list.next == null) {
+            result += list.value;
+            return result;
+        }
+        result += list.value + ',';
+        return this.printHelper(list.next, result);
+    }
+    linkedlist.print = function () {
+        let result = 'LinkedList{';
+        result = this.printHelper(this, result);
+        result += '}';
+        console.log(result);
+    }
+    linkedlist.add(1);
+    linkedlist.add(2);
+    linkedlist.add(3);
+    linkedlist.print();
+    linkedlist.remove(3);
+    linkedlist.print();
+
+    //Constructor Function Solution:
+    function LinkedList() {
+
+    }
+    LinkedList.prototype.add = function (element) {
+        if (this.value === undefined) {
+            this.value = element;
+            this.next = null;
+        } else {
+            let current = this;
+            while (current.next) {
+                current = current.next;
+            }
+            current.next = { value: element, next: null };
+        }
+    }
+    LinkedList.prototype.remove = function (element) {
+        var current = this;
+        var prev = null;
+        while (current) {
+            if (current.value === element) {
+                if (prev == null) {
+                    this.value = current.next.value;
+                    this.next = current.next.next;
+                } else {
+                    prev.next = current.next;
+                }
+                return true;
+            }
+            prev = current;
+            current = current.next;
+        }
+        return false;
+    }
+    LinkedList.prototype.printHelper = function (list, result) {
+        if (list.next == null) {
+            result += list.value;
+            return result;
+        }
+        result += list.value + ',';
+        return this.printHelper(list.next, result);
+    }
+    LinkedList.prototype.print = function () {
+        let result = 'LinkedList{';
+        result = this.printHelper(this, result);
+        result += '}';
+        console.log(result);
+    }
+    let linkedlist2 = new LinkedList();
+    linkedlist2.add(1);
+    linkedlist2.add(2);
+    linkedlist2.add(3);
+    linkedlist2.print();
+    linkedlist2.remove(3);
+    linkedlist2.print();
+</script>
+
 <body>
 
     <pre>
@@ -80,7 +246,138 @@ stu4.inputNewGrade(100);
 let students2=[stu3, stu4];
 let avg2 = (students2.reduce((c,p)=>c + p.computeAverageGrade(),0))/students2.length;
 console.log(`Average grade: ${avg2}`);
+
+<h1>
+Answer of question no 3
+</h1>
+Array.prototype.mysort = function () {
+    let arr = this;
+    let len = arr.length;
+    for (let i = len - 1; i >= 0; i--) {
+        for (let j = 1; j <= i; j++) {
+            if (arr[j - 1] > arr[j]) {
+                let temp = arr[j - 1];
+                arr[j - 1] = arr[j];
+                arr[j] = temp;
+            }
+        }
+    }
+    return arr;
+}
+
+<h1>
+Answer of question no 4
+</h1>
+<h3>Object Literal solution:</h3>
+    let linkedlist = {};
+    linkedlist.add = function (element) {
+        if (this.value === undefined) {
+            this.value = element;
+            this.next = null;
+        } else {
+            let current = this;
+            while (current.next) {
+                current = current.next;
+            }
+            current.next = { value: element, next: null };
+        }
+    }
+    linkedlist.remove = function (element) {
+        var current = this;
+        var prev = null;
+        while (current) {
+            if (current.value === element) {
+                if (prev == null) {
+                    this.value = current.next.value;
+                    this.next = current.next.next;
+                } else {
+                    prev.next = current.next;
+                }
+                return true;
+            }
+            prev = current;
+            current = current.next;
+        }
+        return false;
+    }
+    linkedlist.printHelper = function (list, result) {
+        if (list.next == null) {
+            result += list.value;
+            return result;
+        }
+        result += list.value + ',';
+        return this.printHelper(list.next, result);
+    }
+    linkedlist.print = function () {
+        let result = 'LinkedList{';
+        result = this.printHelper(this, result);
+        result += '}';
+        console.log(result);
+    }
+    linkedlist.add(1);
+    linkedlist.add(2);
+    linkedlist.add(3);
+    linkedlist.print(); 
+    linkedlist.remove(3);
+    linkedlist.print();
+<h3>//Constructor Function Solution:</h3>
+    
+    function LinkedList() {
+
+    }
+    LinkedList.prototype.add = function (element) {
+        if (this.value === undefined) {
+            this.value = element;
+            this.next = null;
+        } else {
+            let current = this;
+            while (current.next) {
+                current = current.next;
+            }
+            current.next = { value: element, next: null };
+        }
+    }
+    LinkedList.prototype.remove = function (element) {
+        var current = this;
+        var prev = null;
+        while (current) {
+            if (current.value === element) {
+                if (prev == null) {
+                    this.value = current.next.value;
+                    this.next = current.next.next;
+                } else {
+                    prev.next = current.next;
+                }
+                return true;
+            }
+            prev = current;
+            current = current.next;
+        }
+        return false;
+    }
+    LinkedList.prototype.printHelper = function (list, result) {
+        if (list.next == null) {
+            result += list.value;
+            return result;
+        }
+        result += list.value + ',';
+        return this.printHelper(list.next, result);
+    }
+    LinkedList.prototype.print = function () {
+        let result = 'LinkedList{';
+        result = this.printHelper(this, result);
+        result += '}';
+        console.log(result);
+    }
+    let linkedlist2 = new LinkedList();
+    linkedlist2.add(1);
+    linkedlist2.add(2);
+    linkedlist2.add(3);
+    linkedlist2.print(); 
+    linkedlist2.remove(3);
+    linkedlist2.print();
         </code>
     </pre>
 </body>
+
 </html>
