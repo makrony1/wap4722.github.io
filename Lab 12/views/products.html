@@ -1,11 +1,72 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <title>WAP Assignment</title>
+    <link href="/css/style.css" type="text/css" rel="stylesheet">
+    <script src="/js/productPage.js"></script>
+
+     
 </head>
+
 <body>
-<h1>Product page</h1>
+    <header>
+        <img src="https://codetheweb.blog/assets/img/icon2.png">
+        <nav>
+            <ul>
+                <li><a href="/">Home</a></li>
+                <li><a  href="/user">Users</a></li>
+                <li><a style="color: white;" href="/product">Products</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <h3>Product list</h3>
+        <table id="product">
+            <tr>
+                <th>Company</th>
+                <th>Contact</th>
+                <th>Country</th>
+            </tr>
+            
+        </table>
+
+        <br/>
+        <div class="container">
+            <h4>Add a new product</h4>
+            <div class="row">
+              <div class="col-25">
+                <label for="name">Name</label>
+              </div>
+              <div class="col-75">
+                <input type="text" id="name" name="name" placeholder="Your name..">
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-25">
+                <label for="quatity">Quantity</label>
+              </div>
+              <div class="col-75">
+                <input type="number" id="quatity" name="quatity" placeholder="Quantity..">
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-25">
+                <label for="price">Price</label>
+              </div>
+              <div class="col-75">
+                <input type="number" id="price" name="price" placeholder="Price.." />
+              </div>
+            </div>
+            <br>
+            <div class="row">
+              <input type="submit" value="Submit" id="addProduct">
+            </div>
+          </div>
+    </main>
+
 </body>
+
 </html>
