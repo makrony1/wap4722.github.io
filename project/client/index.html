@@ -4,126 +4,65 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>WAP Assignment</title>
-    <link href="style.css" type="text/css" rel="stylesheet">
+    <link rel="icon" type="image/x-icon" href="http://localhost:3000/favico.png">
+    <title>My Store</title>
+    <link href="public/assets/css/style.css" type="text/css" rel="stylesheet">
+    <script src="public/assets/js/store.js"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 
      
 </head>
 
 <body>
     <header>
-        <img src="https://codetheweb.blog/assets/img/icon2.png">
+        <img src="https://codetheweb.blog/assets/img/icon2.png" alt="Logo">
         <nav>
-            <ul>
-                <li><a href="#">Home</a></li>
-                <li><a href="#">Users</a></li>
-                <li><a href="#">Products</a></li>
-            </ul>
+            <div style="position: fixed; top:10px; right:100px;">
+              <div id="login-form">
+                Username: <input type="text" id="userId" placeholder="Username" /><br/>
+              Password: &nbsp;<input type="password" id="password" placeholder="Password" />
+
+              </div>
+              
+              <label id="welcome"></label>
+              <input class="login-logout"  type="submit" id="btnLogin" value="Login"/>
+              <input class="login-logout" style="display: none;" type="submit" id="btnLogout" value="Logout"/>
+            </div>
         </nav>
     </header>
     <main>
-        <table id="customers">
-            <tr>
-                <th>Company</th>
-                <th>Contact</th>
-                <th>Country</th>
-            </tr>
-            <tr>
-                <td>Alfreds Futterkiste</td>
-                <td>Maria Anders</td>
-                <td>Germany</td>
-            </tr>
-            <tr>
-                <td>Berglunds snabbköp</td>
-                <td>Christina Berglund</td>
-                <td>Sweden</td>
-            </tr>
-            <tr>
-                <td>Centro comercial Moctezuma</td>
-                <td>Francisco Chang</td>
-                <td>Mexico</td>
-            </tr>
-            <tr>
-                <td>Ernst Handel</td>
-                <td>Roland Mendel</td>
-                <td>Austria</td>
-            </tr>
-            <tr>
-                <td>Island Trading</td>
-                <td>Helen Bennett</td>
-                <td>UK</td>
-            </tr>
-            <tr>
-                <td>Königlich Essen</td>
-                <td>Philip Cramer</td>
-                <td>Germany</td>
-            </tr>
-            <tr>
-                <td>Laughing Bacchus Winecellars</td>
-                <td>Yoshi Tannamuri</td>
-                <td>Canada</td>
-            </tr>
-            <tr>
-                <td>Magazzini Alimentari Riuniti</td>
-                <td>Giovanni Rovelli</td>
-                <td>Italy</td>
-            </tr>
-            <tr>
-                <td>North/South</td>
-                <td>Simon Crowther</td>
-                <td>UK</td>
-            </tr>
-            <tr>
-                <td>Paris spécialités</td>
-                <td>Marie Bertrand</td>
-                <td>France</td>
-            </tr>
-        </table>
+        <div id="before-login" style="text-align: center; ">
+          <h1>Welcome to my store</h1>
+          <img src="./public/assets/img/back.jpg"/>
 
-        <div class="container">
-            <form action="/action_page.php">
-            <div class="row">
-              <div class="col-25">
-                <label for="fname">First Name</label>
-              </div>
-              <div class="col-75">
-                <input type="text" id="fname" name="firstname" placeholder="Your name..">
-              </div>
-            </div>
-            <div class="row">
-              <div class="col-25">
-                <label for="lname">Last Name</label>
-              </div>
-              <div class="col-75">
-                <input type="text" id="lname" name="lastname" placeholder="Your last name..">
-              </div>
-            </div>
-            <div class="row">
-              <div class="col-25">
-                <label for="country">Country</label>
-              </div>
-              <div class="col-75">
-                <select id="country" name="country">
-                  <option value="australia">Australia</option>
-                  <option value="canada">Canada</option>
-                  <option value="usa">USA</option>
-                </select>
-              </div>
-            </div>
-            <div class="row">
-              <div class="col-25">
-                <label for="subject">Subject</label>
-              </div>
-              <div class="col-75">
-                <textarea id="subject" name="subject" placeholder="Write something.." style="height:200px"></textarea>
-              </div>
-            </div>
-            <br>
-            <div class="row">
-              <input type="submit" value="Submit">
-            </div>
-            </form>
+        </div>
+        <div display="none" id="after-login">
+          <h3>Product list</h3>
+          <table id="product">
+              <tr>
+                  <th>Company</th>
+                  <th>Contact</th>
+                  <th>Country</th>
+              </tr>
+              
+          </table>
+
+          <h3>Your Shopping Cart</h3>
+          <div id="no-shopping-cart" >
+            <h4>There is no items in your shopping cart!</h4>
           </div>
+          
+          <div id="shopping-cart">
+            <table id="cart">
+              <tr>
+                  <th>Company</th>
+                  <th>Contact</th>
+                  <th>Country</th>
+              </tr>
+          </table>
+            <input style="margin-top: 10px;" onclick="Store.placeOrder()" type="submit" value="Place order">
+          </div>
+        </div>
     </main>
 
 </body>
