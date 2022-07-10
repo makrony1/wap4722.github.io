@@ -2,22 +2,22 @@ let db = [
     {
         id:1,
         title:"Node.js",
-        stock:12,
+        stock:10,
         price:9.99,
         imageUrl:"2.png"
     },
     {
         id:2,
         title:"React",
-        stock:12,
-        price:9.99,
+        stock:15,
+        price: 19.95,
         imageUrl:'3.jpg'
     },
     {
         id:3,
         title:"Angular",
-        stock:12,
-        price:9.99,
+        stock: 3,
+        price:3.56,
         imageUrl:'1.png'
     }
 ];

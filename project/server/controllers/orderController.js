@@ -13,12 +13,13 @@ const CreateOrder = (req, res, next) => {
     userCart.orderItems.forEach((oi)=>{
         let p = products.find(p=>p.id==oi.productId && p.stock >= oi.quantity);
         if(p==null){
-            invalidP.push(p);
+            invalidP.push(products.find(p=>p.id==oi.productId));
         }
     });
 
     if(invalidP.length > 0){
-        res.status(500).json({success:false,msg:"Invalid product or product quantity selection"})
+        var productnames = invalidP.map(p=>p.title).join(', ')
+        res.status(500).json({success:false,msg:"Product(s) "+productnames+" are/is not available"});
     }else{
         userCart.orderItems.forEach((oi)=>{
             let p = products.find(p=>p.id==oi.productId);

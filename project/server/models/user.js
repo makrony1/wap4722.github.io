@@ -12,7 +12,7 @@ let db = [{
 },
 {
     id: 3,
-    name: 'Shudissan',
+    name: 'Shudi',
     password: '123'
 }];
 

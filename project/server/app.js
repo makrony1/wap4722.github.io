@@ -27,9 +27,6 @@ app.use((req, res, next) => {
     }
 })
 
-
-
-
 app.use('/products', productRouter);
 app.use('/CartItems', cartItemRouter);
 app.use('/orders', orderRouter);
