@@ -190,7 +190,7 @@ let Store = {
         <td>${u.price}</td>
         <td><img width="50px" src="http://localhost:3000/${u.imageUrl}" alt="Product image"/></td>
         <td>${u.stock}</td>
-        <td><button data-id="u.id" onclick="Store.addCart(${u.id})" class="add_cart">Add to cart</button></td>
+        <td><button data-id="u.id" onclick="Store.addCart(${u.id})" class="add_cart"><img width="50px" title="Add to cart" alt="Add to cart" src="./public/assets/img/cart.jpg"/></button></td>
         </tr>`;
                     str += temp
                 });

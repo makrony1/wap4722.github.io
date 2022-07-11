@@ -34,6 +34,8 @@ app.use('/products', productRouter);
 app.use('/CartItems', cartItemRouter);
 app.use('/orders', orderRouter);
 
-
+app.use((req, res, next) => {
+    res.status(404).json({ error: true, message: req.url + " API not supported!" });
+  });
 
 app.listen(3000, ()=>console.log('listen on 3000'));
