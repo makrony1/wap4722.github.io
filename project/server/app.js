@@ -17,10 +17,13 @@ app.use(express.static(path.join(__dirname,'res','img')));
 
 app.use((req, res, next) => {
     const auth = req.headers.authorization;
-    
+    if(auth== null || auth==undefined || auth.length==0){
+        res.status(401).json({success: false,msg:'No Access Token'});
+        return;
+    }
     const token = auth.split(' ')[1];
     if(token === 'null'){
-        res.json({error: 'No Access Token'});
+        res.status(401).json({success: false,msg:'No Access Token'});
     } else {
         req.user = token.split('-')[0];
         next();

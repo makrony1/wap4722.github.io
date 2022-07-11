@@ -83,7 +83,6 @@ let Store = {
                             sessionStorage.setItem("token", data.accessToken);
                             let name = sessionStorage.getItem("token").split('-')[1];
                             Store.welcome.innerHTML = 'Welcome ' + name;
-                            sessionStorage.setItem("name", data.name);
                             Store.loadProductTable();
                             Store.loadCard();
                         }
@@ -98,16 +97,20 @@ let Store = {
         })
 
         Store.logoutBtn.addEventListener("click", function () {
+            Store.logout();
+            
+        })
 
-            Store.logoutBtn.style.display = 'none';
+    },
+
+    logout(){
+        Store.logoutBtn.style.display = 'none';
             Store.loginBtn.style.display = 'block';
             Store.main_beore.style.display = 'block';
             Store.main_after.style.display = 'none';
             Store.login_form.style.display = 'block';
             Store.welcome.innerHTML = ''
             sessionStorage.clear();
-        })
-
     },
 
     deleteOi(oderitemId) {
@@ -279,6 +282,13 @@ let Store = {
     },
     async postData(url = '', data = {}, method) {
 
+        let token = sessionStorage.getItem('token');
+        if(!url.includes('authenticate')){
+            if(token==null || token==undefined || token==''){
+                Store.logout();
+                return;
+            }
+        }
         let init = {
             method: method,
             mode: 'cors',
@@ -286,7 +296,7 @@ let Store = {
             credentials: 'same-origin',
             headers: {
                 'Content-Type': 'application/json',
-                Authorization: `Bearer ${sessionStorage.getItem('token')}`
+                Authorization: `Bearer ${token}`
             }
         };
 
