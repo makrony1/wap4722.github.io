@@ -28,7 +28,7 @@ let Store = {
             Store.main_after.style.display = 'block';
             Store.login_form.style.display = 'none';
             let name = sessionStorage.getItem("token").split('-')[1];
-            Store.welcome.innerHTML = 'Welcome ' + name;
+            Store.welcome.innerHTML = 'Welcome, <label style="text-decoration: underline"> ' + name+'</label>';
             Store.loadProductTable();
             Store.loadCard();
         }
@@ -82,7 +82,7 @@ let Store = {
                             Store.login_form.style.display = 'none';
                             sessionStorage.setItem("token", data.accessToken);
                             let name = sessionStorage.getItem("token").split('-')[1];
-                            Store.welcome.innerHTML = 'Welcome ' + name;
+                            Store.welcome.innerHTML = 'Welcome, <label style="text-decoration: underline">' + name+'</label>';
                             Store.loadProductTable();
                             Store.loadCard();
                         }
